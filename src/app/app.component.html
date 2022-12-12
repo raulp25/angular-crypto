@@ -1,0 +1,16 @@
+<mat-toolbar class="toolbar-main">
+	<span class="fw-bold">Cripto Currency Prices</span>
+	<span class="example-spacer"></span>
+	<mat-form-field class="dropdown">
+		<mat-select
+			(valueChange)="sendCurrency($event)"
+			class="text-sm dropdown"
+			[(ngModel)]="selectedCurrency"
+		>
+			<mat-option class="dropdown" selected value="USD">USD</mat-option>
+			<mat-option class="dropdown" value="SGD">SGD</mat-option>
+		</mat-select>
+	</mat-form-field>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

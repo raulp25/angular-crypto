@@ -1,0 +1,56 @@
+<div class="container-fluid coin-detail-container">
+	<div class="row">
+		<div class="col-md-3 details">
+			<div class="img">
+				<img [src]="coinData?.image?.large" alt="coin-image" />
+			</div>
+			<h3 class="text-center coinData-name">{{ coinData?.name }}</h3>
+			<h2
+				lang="en"
+				class="coinData-description"
+				[innerHTML]="coinData?.description?.en.split('. ')[0]"
+			></h2>
+			<div class="more-detail">
+				<span class="title"
+					>Rank:
+					<span class="value">{{ coinData?.market_cap_rank }}</span> </span
+				><br />
+				<span class="title"
+					>Current Price:
+					<span class="value">{{
+						coinData?.market_data.current_price.usd| currency : currency
+					}}</span> </span
+				><br />
+				<span class="title"
+					>Market Cap:
+					<span class="value">{{
+						coinData?.market_data.market_cap.usd| currency : currency
+					}}</span>
+				</span>
+			</div>
+		</div>
+		<div class="col-md-8">
+			<canvas
+				class="canvas-chart"
+				baseChart
+				[data]="lineChartData"
+				[options]="lineChartOptions"
+				[type]="lineChartType"
+			></canvas>
+			<div class="d-flex justify-content-around">
+				<button (click)="getGraphData(1)" class="btn btn-custom">
+					1 day
+				</button>
+				<button (click)="getGraphData(30)" class="btn btn-custom">
+					30 days
+				</button>
+				<button (click)="getGraphData(90)" class="btn btn-custom">
+					90 days
+				</button>
+				<button (click)="getGraphData(365)" class="btn btn-custom">
+					1 year
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
