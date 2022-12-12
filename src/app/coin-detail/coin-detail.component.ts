@@ -63,14 +63,15 @@ export class CoinDetailComponent implements OnInit{
   getCoinData(){
     this.api.getCurrencyById(this.coinId)
     .subscribe(res=>{
-      this.coinData = res;
       console.log(res);
       if(this.currency === 'USD'){
-        res.market_data.current_price.usd = res.market_data.current_price.sgd;
-        res.market_data.market_cap.usd = res.market_data.market_cap.sgd;
+        res.market_data.current_price.usd = res.market_data.current_price.usd;
+        res.market_data.market_cap.usd = res.market_data.market_cap.usd;
+        this.coinData = res;
+        return;
       }
-      res.market_data.current_price.usd = res.market_data.current_price.usd;
-      res.market_data.market_cap.usd = res.market_data.market_cap.usd;
+      res.market_data.current_price.usd = res.market_data.current_price.sgd;
+      res.market_data.market_cap.usd = res.market_data.market_cap.sgd;
       this.coinData = res;
     });
   }
